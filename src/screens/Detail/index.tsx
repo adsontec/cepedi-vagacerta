@@ -3,6 +3,7 @@ import { useCallback } from "react";
 import { Button } from "../../components/Button";
 import { Logo } from "../../components/Logo";
 import { INavigationProps } from "../RootStackParams";
+import {Linking} from 'react-native';
 import {
   Content,
   Description,
@@ -12,11 +13,15 @@ import {
   Wrapper,
 } from "./styles";
 
-export default function Detail() {
+export default function Detail() {  
   const { goBack } = useNavigation<INavigationProps>();
 
   const handleGoBack = useCallback(() => {
     goBack();
+  }, []);
+
+  const handlePress = useCallback(async () => {
+    await Linking.openURL('https://wa.me/5573981620521');
   }, []);
 
   return (
@@ -42,7 +47,7 @@ export default function Detail() {
           para plataformas iOS e/ou Android, além de habilidades comprovadas em
           programação em linguagens como Swift, Kotlin, Objective-C e/ou Java.
         </Description>
-        <Button title="Entrar em contato" />
+        <Button title="Entrar em contato" onPress={handlePress} />
       </Content>
     </Wrapper>
   );
