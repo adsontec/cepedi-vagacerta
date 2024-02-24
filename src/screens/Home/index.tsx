@@ -61,6 +61,7 @@ export default function Home() {
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421,
     });
+    navigate("Detail");
   }, []);
 
   return (
